@@ -1,0 +1,3 @@
+5-cena za bilet jednorazowy
+3-cena za przejazd w ramach biletu wielorazowego
+120-cena biletu miesięcznego
