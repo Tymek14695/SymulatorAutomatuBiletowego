@@ -139,10 +139,13 @@ def payment():
     print(Fore.WHITE + 'Razem do zapłaty:', summaryPrice)
     while coinsWorth < summaryPrice:
         coins = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5]
-        coin = float(input('>> '))
-        if coin in coins:
-            coinsWorth += coin
-        else:
+        try:
+            coin = float(input('>> '))
+            if coin in coins:
+               coinsWorth += coin
+            else:
+                print(Fore.RED + 'Nie ma takiej monety!')
+        except ValueError:
             print(Fore.RED + 'Nie ma takiej monety!')
         print('Saldo:', coinsWorth)
     widthdraw = coinsWorth - summaryPrice
