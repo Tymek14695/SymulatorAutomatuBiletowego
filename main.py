@@ -1,10 +1,16 @@
 from colorama import Fore, Back
-#import keyboard
 import os
 import time
 import datetime
 from random import randint
 
+
+
+
+
+'''
+COSMETICS
+'''
 print(Back.BLUE + 'TatraBus' + 1000 * ' ')
 time.sleep(3)
 
@@ -64,7 +70,13 @@ def loadScene(title):
     reportActivity()
     print(Fore.BLACK + str(title))
     report(f'Cleared console and loaded scene {title}')
+'''
+COSMETICS
+'''
 
+'''
+DATA
+'''
 def getPricelist():
     priceList = []
     loadScene('Pobieranie danych z cennika')
@@ -82,10 +94,22 @@ def getPricelist():
         loadScene('Zapisywanie cennika')
     report(f'Imported price list {priceList}')
     return priceList
+'''
+DATA
+'''
+
+
+
+
+
+
+
 
 
     
-
+'''
+CLASSES
+'''
 class Ticket:
     loadScene('BILET')
     def __init__(self, rodzaj, przejazdy, ulga, ilosc): #tworzenie nowego biletu i kalkulowanie jego ceny
@@ -111,6 +135,26 @@ class Ticket:
     def printData(self):
         print(Fore.WHITE + self.kind, self.rides, self.discount, self.amount, self.price)
 
+class Cart:
+    content = []
+    def addTicket(self, rodzaj:str, przejazdy:int, ulga:float, ilosc:int):
+        self.content.append(Ticket(rodzaj, przejazdy, ulga, ilosc))
+    def showContent(self):
+        for item in self.content:
+            item.printData()
+'''
+CLASSES
+'''
+
+
+
+
+
+
+
+'''
+ACTIONS
+'''
 def printTickets():
     for i in range(len(cart)):
         with open(f'bilet{i + 1}.txt', 'w', encoding='utf-8') as file:
@@ -163,6 +207,12 @@ def showCart():
         #print(items.kind, items.rides, items.discount, items.amount)
     main() if str(input('Czy chcesz kupić kolejny bilet? [t/n]>> ')) == 't' else payment()
     report('Downloaded cart content')
+'''
+ACTIONS
+'''
+
+
+
 
 
 
@@ -254,6 +304,15 @@ def main():
         report('User proceeded to cart')
         showCart()
     
+
+
+
+
+
+
+
+
+
 main()
 
 report('Code executed successfully')
